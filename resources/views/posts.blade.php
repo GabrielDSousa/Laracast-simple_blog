@@ -10,7 +10,7 @@
 </head>
 <body>
 <article>
-    <h1><a href="/post">My first post</a></h1>
+    <h1><a href="/post/my-first-post">My first post</a></h1>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore, non? Accusamus animi aperiam
         blanditiis consectetur ducimus eaque, eveniet fuga id ipsam ipsum iste, itaque laudantium minus obcaecati saepe
@@ -19,7 +19,7 @@
 </article>
 
 <article>
-    <h1><a href="/post">My second post</a></h1>
+    <h1><a href="/post/my-second-post">My second post</a></h1>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore, non? Accusamus animi aperiam
         blanditiis consectetur ducimus eaque, eveniet fuga id ipsam ipsum iste, itaque laudantium minus obcaecati saepe
@@ -28,7 +28,7 @@
 </article>
 
 <article>
-    <h1><a href="/post">My third post</a></h1>
+    <h1><a href="/post/my-third-post">My third post</a></h1>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore, non? Accusamus animi aperiam
         blanditiis consectetur ducimus eaque, eveniet fuga id ipsam ipsum iste, itaque laudantium minus obcaecati saepe
