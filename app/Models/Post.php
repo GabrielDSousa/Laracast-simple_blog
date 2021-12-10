@@ -1,28 +1,57 @@
 <?php
 
-
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
-use Cassandra\Exception\AlreadyExistsException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\File;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+/**
+ * App\Models\Post
+ *
+ * @property int $id
+ * @property int $category_id
+ * @property string $title
+ * @property string $slug
+ * @property string $excerpt
+ * @property string $body
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $published_at
+ * @property int $user_id
+ * @property-read Category $category
+ * @method static Builder|Post newModelQuery()
+ * @method static Builder|Post newQuery()
+ * @method static Builder|Post query()
+ * @method static Builder|Post whereBody($value)
+ * @method static Builder|Post whereCategoryId($value)
+ * @method static Builder|Post whereCreatedAt($value)
+ * @method static Builder|Post whereExcerpt($value)
+ * @method static Builder|Post whereId($value)
+ * @method static Builder|Post wherePublishedAt($value)
+ * @method static Builder|Post whereSlug($value)
+ * @method static Builder|Post whereTitle($value)
+ * @method static Builder|Post whereUpdatedAt($value)
+ * @method static Builder|Post whereUserId($value)
+ * @mixin Eloquent
+ * @property-read \App\Models\User $user
+ */
 
-class Post
+class Post extends Model
 {
+    use HasFactory;
 
-    public static function find($slug)
+    protected $guarded = ['id'];
+
+    public function category()
     {
-        if (! file_exists($path = resource_path("posts/{$slug}.html"))) {
-            throw new ModelNotFoundException();
-        }
-        return cache()->remember("posts.{$slug}", now()->addDay(), fn() => file_get_contents($path));
+        return $this->belongsTo(Category::class);
     }
 
-    public static function all()
+    public function user()
     {
-        $files = File::files(resource_path("posts/"));
-        return array_map(fn($file) => $file->getContents(), $files);
+        return $this->belongsTo(User::class);
     }
 }
